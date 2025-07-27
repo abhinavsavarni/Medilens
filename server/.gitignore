@@ -3,3 +3,4 @@ uploads/
 .env
 npm-debug.log
 .DS_Store
+google-credentials.json
