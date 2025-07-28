@@ -65,14 +65,15 @@ async function getAiSummary(text) {
   const response = await openai.chat.completions.create({
     model: "sonar-pro",
     messages: [
-      { role: "system", content: "You are a medical assistant. Given the following text, summarize it and list possible uses, pros, and cons of any medicine mentioned. Respond as a helpful assistant." },
+      { role: "system", content: "You are a medical expert assistant. Analyze the following OCR text from a medical prescription or report. First, list all medicines/active ingredients. Then, provide for each: what it's for, how it's used, and important side effects/warnings (if any). If the text is unclear or not a prescription/report, say so—but *never* just repeat the input." },
       { role: "user", content: text }
     ],
-    max_tokens: 300,
+    max_tokens: 340,
     temperature: 0.6,
   });
   return response.choices[0].message.content;
 }
+
 
 // ========== Routes ==========
 
